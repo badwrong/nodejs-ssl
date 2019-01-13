@@ -51,11 +51,9 @@ if ( protocol === 'https' ) {
 		try {
 			execSync( 'openssl version', execOptions );
 			execSync(
-				`openssl req -x509 -newkey rsa:2048 -keyout ./certs/key.tmp.pem -out ${ certificate } -days 365 -nodes -subj "/C=US/ST=Georgia/L=Atlanta/CN=localhost"`,
+				`openssl req -x509 -newkey rsa:2048 -keyout ./certs/key.pem -out ${ certificate } -days 365 -nodes -subj "/C=US/ST=Georgia/L=Atlanta/CN=localhost"`,
 				execOptions
 			);
-			execSync( `openssl rsa -in ./certs/key.tmp.pem -out ${ key }`, execOptions );
-			execSync( 'rm ./certs/key.tmp.pem', execOptions );
 		} catch ( error ) {
 			console.error( error );
 		}
