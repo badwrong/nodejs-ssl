@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "start:client": "node client.js",
+    "generate:client_csr": "openssl req -newkey rsa:4096 -keyout certs/client_key.pem -out certs/client_csr.pem -nodes -days 365 -subj \"/CN=TestClient\"",
+    "generate:client_cert": "openssl x509 -req -in certs/client_csr.pem -CA certs/server_certificate.pem -CAkey certs/server_key.pem -out certs/client_certificate.pem -set_serial 01 -days 365"
   },
   "keywords": [],
   "author": "",
